@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: bef67bb29ec073a4a8a22e371a94163f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Quattrocento Sans
+  fontNames:
+  - Quattrocento Sans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2a407d3151c7c0048a50d1ccfb9d5a36, type: 3}
+  - {fileID: 12800000, guid: e02eb40428985184fbef22b9aa99b680, type: 3}
+  - {fileID: 12800000, guid: f61131291de543645b229537668d186b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
