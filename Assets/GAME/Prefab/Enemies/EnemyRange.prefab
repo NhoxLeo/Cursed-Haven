@@ -550,6 +550,9 @@ MonoBehaviour:
   canonOrigin: {fileID: 274968268}
   waitingTimeAfterHit: 1
   enemyStateAttack: {fileID: 0}
+  SpellRangeBullet: {fileID: 1237158167451204264, guid: 416315b4fe1e83b499c556a2bcfa6522,
+    type: 3}
+  lazerLine: {fileID: 1452268367, guid: 416315b4fe1e83b499c556a2bcfa6522, type: 3}
 --- !u!1 &6296822606459324333
 GameObject:
   m_ObjectHideFlags: 0

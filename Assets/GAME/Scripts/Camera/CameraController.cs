@@ -33,13 +33,12 @@ public class CameraController : MonoBehaviour
             cameraShake = GameObject.Find("CameraHolder").GetComponent<CameraShake>();
             playerAbilities = GameObject.Find("BoneKnightIdle").GetComponent<PlayerAbilities>();
       //  }
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (cameraTarget != null) {
             currentPos = cam.transform.position;
 

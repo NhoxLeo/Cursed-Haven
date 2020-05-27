@@ -11,20 +11,54 @@ public class EnemyRangeAttack : MonoBehaviour
     [SerializeField] private float waitingTimeAfterHit = 1f;
     private Transform projectileParent;
     public EnnemyFollowPlayer enemyStateAttack;
+    
+   
+    [Space(5)]
+    [Header("Area Spell Attack")]
+    [SerializeField] private GameObject SpellRangeBullet;
+    private Transform player;
+
+
+    [Space(5)]
+    [Header("General Attributes")]
+    [SerializeField] private int randomIndexAttack;
+    private HordeMode hordeMode;
+
+
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         enemyStateAttack = gameObject.GetComponent<EnnemyFollowPlayer>();
         projectileParent = GameObject.Find("Projectiles").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        hordeMode = GameObject.Find("GameMode").GetComponent<HordeMode>();
+
+
     }
 
 
     void Update()
     {
+        randomIndexAttack = Mathf.FloorToInt(Random.Range(1,3));
+        Debug.Log(randomIndexAttack);
+
+        
+        
+
         if (enemyStateAttack.hasToAttack == true)
         {
-            StartCoroutine("RangeAttack");
+            if (randomIndexAttack == 1) {
+                StartCoroutine("RangeAttack");
+            }
+
+            if (randomIndexAttack == 2 && hordeMode.currentWave >= 1) {
+                StartCoroutine("SpellRangeAreaAttack");
+            }
+                   
         }
     }
 
@@ -45,4 +79,19 @@ public class EnemyRangeAttack : MonoBehaviour
 
 
     }
+
+    IEnumerator SpellRangeAreaAttack() {
+        
+        enemyStateAttack.isAttacking = true;
+
+        GameObject GOSpellCast = Instantiate(SpellRangeBullet, new Vector3(player.position.x, player.position.y + 0.5f, player.position.z) , Quaternion.identity, projectileParent);
+      
+       
+        enemyStateAttack.hasToAttack = false;       
+        yield return new WaitForSeconds(2f); 
+        enemyStateAttack.isAttacking = false;
+
+    }
+
+
 }

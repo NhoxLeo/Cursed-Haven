@@ -121,6 +121,9 @@ GameObject:
   - component: {fileID: 8152032583178416529}
   - component: {fileID: -6425394776649998020}
   - component: {fileID: 5729912194350164713}
+  - component: {fileID: 5833746333027531783}
+  - component: {fileID: 5096223983062103898}
+  - component: {fileID: 3095180142942750780}
   m_Layer: 0
   m_Name: PhoenixProjectile
   m_TagString: Untagged
@@ -160,9 +163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   lifeTime: 2
-  randomDefaultDamage: 0
-  defaultMinAttackDamage: 30
-  defaultMaxAttackDamage: 40
 --- !u!96 &5729912194350164713
 TrailRenderer:
   serializedVersion: 2
@@ -269,6 +269,55 @@ TrailRenderer:
   m_MinVertexDistance: 0.3
   m_Autodestruct: 1
   m_Emitting: 1
+--- !u!65 &5833746333027531783
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005590317643965634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.179569, y: 1, z: 6.039234}
+  m_Center: {x: -0.009332418, y: 0, z: -0.43732834}
+--- !u!54 &5096223983062103898
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005590317643965634}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3095180142942750780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005590317643965634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3772c4cdf71f7f7408ddec7631701fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomDefaultDamage: 0
+  defaultMinAttackDamage: 55
+  defaultMaxAttackDamage: 65
+  damagePop: {fileID: 6299845491707319568, guid: 3dab0c48acd85834f948a4c4939b143b,
+    type: 3}
+  offestY: 1
+  minAngle: -10
+  maxAngle: 10
 --- !u!1001 &1819317357
 PrefabInstance:
   m_ObjectHideFlags: 0

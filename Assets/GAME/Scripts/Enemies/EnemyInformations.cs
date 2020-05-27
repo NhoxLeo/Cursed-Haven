@@ -8,7 +8,7 @@ public class EnemyInformations : MonoBehaviour
 {
     [Header("Health properties")]
    // [SerializeField] private TextMeshProUGUI healthText;
-    public int MaxValue = 100;
+    public int MaxValue = 200;
     public int currentEnemyHealth;
     [SerializeField] private GameObject VFXDie;
     [SerializeField] private Canvas health;
@@ -17,33 +17,29 @@ public class EnemyInformations : MonoBehaviour
 
     private Camera cam;
     public HealthBar healthBar;
-
-
     private Collider m_collider;
+    private FreezeTime freeTime;
+
+
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        currentEnemyHealth = MaxValue;
-        healthBar.SetMaxHealth(MaxValue);
+       
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         hordeMode = GameObject.Find("GameMode").GetComponent<HordeMode>();
         m_collider = GetComponent<Collider>();
+        freeTime = GameObject.Find("Freezer").GetComponent<FreezeTime>();
+
+        MaxValue += 5 * hordeMode.currentWave;
+
+        currentEnemyHealth = MaxValue;
+        healthBar.SetMaxHealth(MaxValue);
 
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //healthText.text = currentEnemyHealth.ToString();
-        /*
-        if (isDead == true) {
-            hordeMode.currentNbrEnemy--;
-            hordeMode.killTotal += 1;
-            Destroy(gameObject);
-        }*/
-
-      
     }
 
 
@@ -63,6 +59,7 @@ public class EnemyInformations : MonoBehaviour
             m_collider.enabled = false;
             hordeMode.currentNbrEnemy--;
             hordeMode.killTotal += 1;
+            freeTime.StopFrame(0.1f);
 
 
             //Acces the horde mode script to decrease value of the current number of enemy

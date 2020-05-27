@@ -21,11 +21,6 @@ public class AbilityHit : MonoBehaviour
 
 
 
-    private void Start()
-    {
-        Destroy(transform.parent.gameObject, 2.5f);
-    }
-
     public int RandomDefaultDamage()
     {
         // Randomize the default damage from the bullet

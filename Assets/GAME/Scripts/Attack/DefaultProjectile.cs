@@ -25,6 +25,12 @@ public class DefaultProjectile : MonoBehaviour
 
 
 
+    [SerializeField] private GameObject ProjectileContainer;
+
+
+
+
+
     private void Start()
     {
         Destroy(gameObject, lifeTime);
@@ -92,6 +98,9 @@ public class DefaultProjectile : MonoBehaviour
             damageText.transform.rotation = Quaternion.Euler(new Vector3(0,0, Random.Range(minAngle, maxAngle)));
             damageText.text = RandomDefaultDamage().ToString();
             GameObject GODamagePop = Instantiate(damagePop, new Vector3(other.transform.position.x, other.transform.position.y + offestY, other.transform.position.z), Quaternion.identity);
+
+
+      
             
             //then the bullet is destroy
             Destroy(gameObject);

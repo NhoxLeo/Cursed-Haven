@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class GameManagerSystem : MonoBehaviour
+public class MainMenuSettings : MonoBehaviour
 {
 
 
@@ -23,81 +23,45 @@ public class GameManagerSystem : MonoBehaviour
 
     private int state = 1;
     public GameObject overlayBG;
-    public  Animator animOverlay;
+    public Animator animOverlay;
     public bool isPaused = false;
     private bool trigSettings = false;
-
-
-    [Space(5)]
-    [Header("Player GameOver")]
-    [SerializeField] private GameObject player;
-    private PlayerHealthSystem playerHealthSystem;
-    private bool triggerDyingTransiton = false;
-    public GameObject gameOverUI;
+    public bool settingsButtonTrigger = false;
 
 
 
-
+    // Start is called before the first frame update
     void Start()
-    {    
+    {
         PPPVolumne.profile.TryGet(out dof);
         settingsCanvas.SetActive(false);
         animOverlay = overlayBG.GetComponent<Animator>();
-        settingsAnim = settingsCanvas.GetComponent <Animator>();
-
-
-        //Game over component needed
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerHealthSystem = player.GetComponent<PlayerHealthSystem>();
+        settingsAnim = settingsCanvas.GetComponent<Animator>();
     }
 
-
+    // Update is called once per frame
     void Update()
-    {  
-
-        if (Input.GetKeyDown(KeyCode.Escape) && triggerDyingTransiton == false) {
-            trigSettings = true;
-            isNullFlou = false;
-            IncreaseFlou();
-            StartCoroutine("FreezeTime");
-
-        }
-
+    {
+      
 
         if (isNullFlou == false)
         {
             increaseOverlay();
         }
+    }
 
-        DetectGameOver();
+    public void SettingButtonsDown() {
 
+        trigSettings = true;
+        isNullFlou = false;
+        IncreaseFlou();
+        StartCoroutine("FreezeTime");
     }
 
 
-    public void DetectGameOver() {
 
-        if (playerHealthSystem.currentHealthValue <= 0) {
-
-            //This is GameOver, the player is dead and have no more health
-            isNullFlou = false;
-
-
-            if (triggerDyingTransiton == false) {
-                IncreaseFlou();
-                StartCoroutine("FreezeTime");
-                triggerDyingTransiton = true;
-            }
-            
-            
-            
-
-        }
-    
-    
-    }
-
-
-    public void increaseOverlay() {
+    public void increaseOverlay()
+    {
 
         if (activateFlou == true)
         {
@@ -105,7 +69,7 @@ public class GameManagerSystem : MonoBehaviour
             dof.aperture.value = Mathf.Lerp(apertureTemp, 0f, speedLerp);
             dof.focusDistance.value = Mathf.Lerp(focusDistTemp, 1f, speedLerp);
             speedLerp += 1f * Time.deltaTime;
-           
+
         }
         else
         {
@@ -113,28 +77,23 @@ public class GameManagerSystem : MonoBehaviour
             dof.aperture.value = Mathf.Lerp(0f, apertureTemp, speedLerp);
             dof.focusDistance.value = Mathf.Lerp(1f, focusDistTemp, speedLerp);
             speedLerp += 1f * Time.deltaTime;
-          
+
         }
 
     }
 
-    IEnumerator FreezeTime() {
+    IEnumerator FreezeTime()
+    {
 
         if (activateFlou == true)
         {
             yield return new WaitForSeconds(2f);
             Time.timeScale = 0f; //pause game
-         
-
         }
-        else {
-          
-        
+        else
+        {
             Time.timeScale = 1f; //pause game
         }
-
-
-
     }
 
 
@@ -142,13 +101,13 @@ public class GameManagerSystem : MonoBehaviour
 
 
 
-    public void IncreaseFlou() {
+    public void IncreaseFlou()
+    {
 
-
-        switch (state) {
-
+        switch (state)
+        {
             case 1:
-                
+
                 speedLerp = 0f;
                 activateFlou = true;
                 animOverlay.SetBool("TriggerIn", true);
@@ -159,18 +118,14 @@ public class GameManagerSystem : MonoBehaviour
                 {
                     settingsCanvas.SetActive(true);
                 }
-                else {
 
-                    gameOverUI.SetActive(true);
-                }
-                
                 state++;
-                
+
                 break;
 
 
             case 2:
-               
+
                 speedLerp = 0f;
                 activateFlou = false;
                 animOverlay.SetBool("TriggerIn", false);
@@ -178,12 +133,9 @@ public class GameManagerSystem : MonoBehaviour
                 settingsAnim.SetBool("isPaused", false);
                 trigSettings = false;
                 state--;
-                
+
                 break;
         }
-      
+
     }
-
-
-
 }

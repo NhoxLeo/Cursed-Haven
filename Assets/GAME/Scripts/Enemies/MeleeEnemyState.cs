@@ -11,8 +11,17 @@ public class MeleeEnemyState : MonoBehaviour
     public GameObject VFXDustDying;
     public Transform dustOrigin;
 
- 
-    
+
+    [Space(5)]
+    [Header("EarthQuake properties")]
+    public GameObject earthQuakeprojectile;
+    [SerializeField] private Transform canonOrigin;
+    [SerializeField] private int randomAttack;
+    private Transform projectileParent;
+
+
+
+
 
 
     // Start is called before the first frame update
@@ -20,6 +29,7 @@ public class MeleeEnemyState : MonoBehaviour
     {
         enemyFollowPlayer = gameObject.GetComponent<EnnemyFollowPlayer>();
         enemyInformations = GetComponent<EnemyInformations>();
+        projectileParent = GameObject.Find("Projectiles").transform;
 
 
     }
@@ -27,14 +37,23 @@ public class MeleeEnemyState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyFollowPlayer.hasToAttack == true)
+
+        randomAttack = Mathf.FloorToInt(Random.Range(1, 3));
+
+
+        if (enemyFollowPlayer.hasToAttack == true && randomAttack == 1)
         {
      
             enemyAnim.SetBool("Attack", true);
+            
          
         }
         else {
             enemyAnim.SetBool("Attack", false);
+        }
+
+        if (enemyFollowPlayer.hasToAttack == true && randomAttack == 2) {
+            StartCoroutine("EarthQuakeAttack");
         }
 
 
@@ -43,6 +62,19 @@ public class MeleeEnemyState : MonoBehaviour
             enemyInformations.isDead = false;
 
         }
+    }
+
+
+    IEnumerator EarthQuakeAttack() {
+
+        enemyFollowPlayer.isAttacking = true;
+        GameObject GOEarthQuake = Instantiate(earthQuakeprojectile, canonOrigin.position, canonOrigin.rotation, projectileParent);
+        enemyFollowPlayer.hasToAttack = false;
+
+
+        yield return new WaitForSeconds(2.5f);
+        enemyFollowPlayer.isAttacking = false;
+
     }
 
     IEnumerator DyingEffect()

@@ -11,10 +11,6 @@ public class PhoenixProjectile : MonoBehaviour
     [SerializeField] private float lifeTime = 2f;
 
 
-    public int randomDefaultDamage;
-    public float defaultMinAttackDamage = 30f;
-    public float defaultMaxAttackDamage = 40f;
-
     // Start is called before the first frame update
     void Start()
     {
