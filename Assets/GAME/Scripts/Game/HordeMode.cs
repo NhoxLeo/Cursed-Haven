@@ -36,6 +36,8 @@ public class HordeMode : MonoBehaviour
     [SerializeField] private Transform[] enemySpawn;
     public int killTotal = 0;
 
+    public GameObject meleeEarthquake;
+
 
 
 
@@ -79,7 +81,10 @@ public class HordeMode : MonoBehaviour
             bossWave = false;
         }
 
-      
+       
+
+
+
 
     }
 
@@ -125,13 +130,24 @@ public class HordeMode : MonoBehaviour
 
     private int RandomEnemyPicking() {
 
-        int randomEnemy = Random.Range(0, enemies.Length);
+        int randomEnemy;
+
+        if (currentWave <= 3)
+        {
+            randomEnemy = Random.Range(0, enemies.Length - 1);
+        }
+        else {
+            randomEnemy = Random.Range(0, enemies.Length);
+        }
+       
         return randomEnemy;
 
     }
 
     private Vector3 RandomSpawnEnemy() {
 
+
+       
         int randomPos = Random.Range(0, enemySpawn.Length);
         return enemySpawn[randomPos].position;
     }
