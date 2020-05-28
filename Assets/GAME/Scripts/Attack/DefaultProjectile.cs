@@ -61,6 +61,8 @@ public class DefaultProjectile : MonoBehaviour
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
             Vector3 pos = contact.point;
 
+            //Mike met ton son de projetile de contact ici
+
             GameObject GOVFX = Instantiate(VFXHit, pos, rot);
             Destroy(gameObject);
             Destroy(GOVFX, .5f);
@@ -74,6 +76,8 @@ public class DefaultProjectile : MonoBehaviour
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
             Vector3 pos = contact.point;
 
+            //Mike met ton son de projetile de contact ici
+
             GameObject GOVFX = Instantiate(VFXHit, pos, rot);
             Destroy(gameObject);
             Destroy(GOVFX, .5f);
@@ -86,6 +90,9 @@ public class DefaultProjectile : MonoBehaviour
             ContactPoint contact = other.contacts[0];
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
             Vector3 pos = contact.point;
+
+
+            //Mike met ton son de projetile de contact ici
 
             //Do some damage to the enemy
             other.gameObject.GetComponent<EnemyInformations>().HurtEnemy(RandomDefaultDamage());

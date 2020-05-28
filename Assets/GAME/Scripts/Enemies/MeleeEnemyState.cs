@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MeleeEnemyState : MonoBehaviour
 {
+
+    
+    public enum MeleeType { Punch, EartQuake };
+    public MeleeType meleeType;
+
+
     [Header("Animator properties")]
     [SerializeField] private Animator enemyAnim;
     private EnnemyFollowPlayer enemyFollowPlayer;
@@ -18,8 +24,6 @@ public class MeleeEnemyState : MonoBehaviour
     [SerializeField] private Transform canonOrigin;
     private Transform projectileParent;
 
-    public enum MeleeType { Punch, EartQuake };
-    public MeleeType meleeType;
    
 
 
@@ -72,6 +76,8 @@ public class MeleeEnemyState : MonoBehaviour
 
 
     public IEnumerator EarthQuakeAttack() {
+
+        //Mike met ton son de meleeEnemy qui attack au sol
 
         enemyFollowPlayer.isAttacking = true;
         GameObject GOEarthQuake = Instantiate(earthQuakeprojectile, canonOrigin.position, canonOrigin.rotation, projectileParent);

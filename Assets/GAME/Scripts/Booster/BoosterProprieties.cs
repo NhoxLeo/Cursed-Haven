@@ -73,6 +73,9 @@ public class BoosterProprieties : MonoBehaviour
 
             anim.SetBool("isCloseToPlayer", true);
             GameObject healEffect = Instantiate(vfxHeal, player.transform.position, Quaternion.identity);
+
+            //Mike met ton son de Chest qui open;
+
             healEffect.transform.parent = player.transform;
             Destroy(healEffect, 4f);
             powerUp.transform.GetChild(0).gameObject.SetActive(true);

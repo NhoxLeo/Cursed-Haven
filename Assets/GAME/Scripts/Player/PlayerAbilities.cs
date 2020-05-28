@@ -78,6 +78,9 @@ public class PlayerAbilities : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && isAbilityQ == false && isUsingAbility == false) {
             isUsingAbility = true;
             playerAnim.SetTrigger("TrigAbility01");
+
+            //Mike met ton son de cast Ability01
+
             StartCoroutine("DivineSword");
             StartCoroutine(LoadAbility(abilityQSlider, waitingTimeQ, currentWaitingTimeValueQ));
         }
@@ -86,6 +89,9 @@ public class PlayerAbilities : MonoBehaviour
         {
             isUsingAbility = true;
             playerAnim.SetTrigger("TrigAbility02");
+
+            //Mike met ton son de cast Ability02
+
             StartCoroutine("InvicibleShield");
             StartCoroutine(LoadAbility(abilityESlider, waitingTimeE, currentWaitingTimeValueE));
         }
@@ -93,6 +99,9 @@ public class PlayerAbilities : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && isAbilityR == false && isUsingAbility == false) {
             isUsingAbility = true;
             playerAnim.SetTrigger("TrigAbility03");
+
+            //Mike met ton son de cast Ability03
+
             StartCoroutine("PhoenixThrow");
             StartCoroutine(LoadAbility(abilityRSlider, waitingTimeR, currentWaitingTimeValueR));
         }
@@ -121,7 +130,8 @@ public class PlayerAbilities : MonoBehaviour
         yield return new WaitForSeconds(waitingTimeQ - cameraShakeWaitUntil -.7f);
         isAbilityQ = false;
         AbilityQIdle.SetActive(true);
-
+        
+        //Son qui indique que ability is ready to use
     }
 
 
@@ -144,8 +154,8 @@ public class PlayerAbilities : MonoBehaviour
         yield return new WaitForSeconds(waitingTimeE - invicibleTime -0.5f);
         isAbilityE = false;
         AbilityEIdle.SetActive(true);
-        
 
+        //Son qui indique que ability is ready to use
     }
 
 
@@ -156,6 +166,9 @@ public class PlayerAbilities : MonoBehaviour
         zoomCam = true;
         yield return new WaitForSeconds(1f);
         zoomCam = false;
+
+        //Mike met ton son du joueur qui lance lepee
+
         GameObject currentPhoenixBlade = Instantiate(projectileR, canonOrigin.position, canonOrigin.rotation);
         currentPhoenixBlade.transform.SetParent(projectilesParent.parent);
         
@@ -163,7 +176,7 @@ public class PlayerAbilities : MonoBehaviour
         isAbilityR = false;
         AbilityRIdle.SetActive(true);
 
-
+        //Son qui indique que ability is ready to use
     }
 
 

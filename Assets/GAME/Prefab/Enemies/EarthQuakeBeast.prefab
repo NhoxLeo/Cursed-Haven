@@ -553,6 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d7c28a0ada0304e8648a0c00995ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeType: 1
   enemyAnim: {fileID: 2872490455222628481}
   VFXDustDying: {fileID: 5326356590604282202, guid: 2864f9bd4d30e024a82393a00d7a6b7a,
     type: 3}
@@ -560,7 +561,6 @@ MonoBehaviour:
   earthQuakeprojectile: {fileID: 7644523163016478008, guid: c288d45826a81324aa5a35437d280670,
     type: 3}
   canonOrigin: {fileID: 6198623282947330386}
-  meleeType: 1
 --- !u!65 &7413421163715819457
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1272,7 +1272,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 548a5aebff6d14441ae04f5b89b02703, type: 2}
+      objectReference: {fileID: 2100000, guid: 9cbd6ceffd811e7478e8196ffb6be6e9, type: 2}
     - target: {fileID: 5840255483787996955, guid: 248c95c43d2fd314b9d4246fc9e2737b,
         type: 3}
       propertyPath: m_Materials.Array.data[3]
@@ -1297,7 +1297,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[5]
       value: 
-      objectReference: {fileID: 2100000, guid: 378a908acae3aa642b17baf8a107d2d5, type: 2}
+      objectReference: {fileID: 2100000, guid: fe322d46cc3688448bae06df7f5f4178, type: 2}
     - target: {fileID: 6204169937033342801, guid: 248c95c43d2fd314b9d4246fc9e2737b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

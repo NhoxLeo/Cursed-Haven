@@ -27,7 +27,7 @@ public class BoosterDynamic : MonoBehaviour
     {
         if (other.transform.tag == "Environment") {
             cameraShake.triggerShake = true;
-            Debug.Log("hehe");
+            //Mike tu peux mettre ton son ici;
 
         }
     }

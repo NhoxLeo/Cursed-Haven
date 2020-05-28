@@ -33,7 +33,7 @@ public class DefaultShot : MonoBehaviour
         // Trigger the default attack
         if (Input.GetMouseButtonDown(0) && isDefaultAttacking == false)
         {
-       
+            
             playerAnim.SetTrigger("IsBasicAttack");
             isDefaultAttacking = true;
             StartCoroutine("DisableElement");
@@ -42,6 +42,7 @@ public class DefaultShot : MonoBehaviour
     }
 
     public void TriggerBasicProjectile() {
+        //Mike met ton son de default attack
         preShot.SetActive(true);
         GameObject currentdefaultAttackGO = Instantiate(defaultAttackGO, DefaultAttackOrigin.position, DefaultAttackOrigin.rotation);
         currentdefaultAttackGO.transform.SetParent(projectileParent.transform);
