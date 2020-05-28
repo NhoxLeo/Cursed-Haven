@@ -16,8 +16,11 @@ public class MeleeEnemyState : MonoBehaviour
     [Header("EarthQuake properties")]
     public GameObject earthQuakeprojectile;
     [SerializeField] private Transform canonOrigin;
-    [SerializeField] private int randomAttack;
     private Transform projectileParent;
+
+    public enum MeleeType { Punch, EartQuake };
+    public MeleeType meleeType;
+   
 
 
 
@@ -27,9 +30,11 @@ public class MeleeEnemyState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         enemyFollowPlayer = gameObject.GetComponent<EnnemyFollowPlayer>();
         enemyInformations = GetComponent<EnemyInformations>();
         projectileParent = GameObject.Find("Projectiles").transform;
+  
 
 
     }
@@ -38,23 +43,24 @@ public class MeleeEnemyState : MonoBehaviour
     void Update()
     {
 
-        randomAttack = Mathf.FloorToInt(Random.Range(1, 3));
+       
+
+            if (enemyFollowPlayer.hasToAttack == true)
+            {
+                enemyAnim.SetBool("Attack", true);
 
 
-        if (enemyFollowPlayer.hasToAttack == true && randomAttack == 1)
-        {
-     
-            enemyAnim.SetBool("Attack", true);
-            
-         
-        }
-        else {
-            enemyAnim.SetBool("Attack", false);
-        }
+            }
+            else
+            {
+                enemyAnim.SetBool("Attack", false);
+            }
+        
+    
+        
+       
 
-        if (enemyFollowPlayer.hasToAttack == true && randomAttack == 2) {
-            StartCoroutine("EarthQuakeAttack");
-        }
+   
 
 
         if (enemyInformations.isDead == true) {
@@ -65,7 +71,7 @@ public class MeleeEnemyState : MonoBehaviour
     }
 
 
-    IEnumerator EarthQuakeAttack() {
+    public IEnumerator EarthQuakeAttack() {
 
         enemyFollowPlayer.isAttacking = true;
         GameObject GOEarthQuake = Instantiate(earthQuakeprojectile, canonOrigin.position, canonOrigin.rotation, projectileParent);
