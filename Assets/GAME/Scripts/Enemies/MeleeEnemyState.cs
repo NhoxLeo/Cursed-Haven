@@ -84,13 +84,15 @@ public class MeleeEnemyState : MonoBehaviour
         enemyFollowPlayer.hasToAttack = false;
 
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(.5f);
         enemyFollowPlayer.isAttacking = false;
 
     }
 
     IEnumerator DyingEffect()
     {
+
+        //Mike met ton son melee Enemy die
 
         enemyAnim.SetTrigger("isDead");
         yield return new WaitForSeconds(2f);
@@ -101,7 +103,10 @@ public class MeleeEnemyState : MonoBehaviour
 
     public void DyingDust() {
 
-       Instantiate(VFXDustDying,dustOrigin.position, Quaternion.identity);
+
+        //Mike met ton son melee Enemy touch the floor while dying
+
+        Instantiate(VFXDustDying,dustOrigin.position, Quaternion.identity);
        Debug.Log("spawnDust");
     }
 
