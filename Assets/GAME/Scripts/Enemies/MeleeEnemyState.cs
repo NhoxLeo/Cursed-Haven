@@ -60,12 +60,6 @@ public class MeleeEnemyState : MonoBehaviour
                 enemyAnim.SetBool("Attack", false);
             }
         
-    
-        
-       
-
-   
-
 
         if (enemyInformations.isDead == true) {
             StartCoroutine("DyingEffect");

@@ -43,27 +43,27 @@ public class EnemyRangeAttack : MonoBehaviour
 
     void Update()
     {
-        randomIndexAttack = Mathf.FloorToInt(Random.Range(1,3));
+        randomIndexAttack = Mathf.FloorToInt(Random.Range(1,2));
         Debug.Log(randomIndexAttack);
 
-        
-        
 
+
+        /* 
         if (enemyStateAttack.hasToAttack == true)
         {
             if (randomIndexAttack == 1) {
                 StartCoroutine("RangeAttack");
             }
 
-            if (randomIndexAttack == 2 && hordeMode.currentWave >= 1) {
+           if (randomIndexAttack == 2 && hordeMode.currentWave >= 1) {
                 StartCoroutine("SpellRangeAreaAttack");
             }
-                   
-        }
+
+         }*/
     }
 
 
-    IEnumerator RangeAttack()
+    public IEnumerator RangeAttack()
     {
 
         enemyStateAttack.isAttacking = true;
@@ -71,6 +71,8 @@ public class EnemyRangeAttack : MonoBehaviour
         //trigger VFX animation
         GameObject GOBullet = Instantiate(bullet, canonOrigin.position, Quaternion.identity, projectileParent);
         enemyStateAttack.hasToAttack = false;
+
+        //Mike met ton son de enemy qui lance projectile;
 
 
         yield return new WaitForSeconds(waitingTimeAfterHit);

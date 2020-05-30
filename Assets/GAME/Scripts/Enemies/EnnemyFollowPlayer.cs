@@ -23,6 +23,7 @@ public class EnnemyFollowPlayer : MonoBehaviour
     [SerializeField] private float rayHeight = 0.5f;
 
     private EnemyInformations enemyInformations;
+    public Animator anim;
 
 
     
@@ -68,12 +69,14 @@ public class EnnemyFollowPlayer : MonoBehaviour
             {
                 nma.SetDestination(targetPlayer.transform.position);
                 hasToAttack = false;
+
             }
             else if (isAttacking == false)
             {
                 hasToAttack = true;
-
+                
             }
+            
         }
         else {
 
@@ -95,11 +98,13 @@ public class EnnemyFollowPlayer : MonoBehaviour
             if (distance >= nma.stoppingDistance || canSeeTheTarget == false)  //Follow the target
             {
                 nma.SetDestination(targetPlayer.transform.position);
+                anim.SetBool("isCloseEnough", false);
             }
             else if (isAttacking == false)
             {
                 hasToAttack = true;
-
+                anim.SetBool("isCloseEnough", true);
+                Debug.Log("oh yeah");
 
             }
 

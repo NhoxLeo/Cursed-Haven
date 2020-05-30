@@ -26,6 +26,13 @@ public class RangeEnemyState : MonoBehaviour
             enemyInformations.isDead = false;
 
         }
+
+        if (enemyFollowPlayer.hasToAttack == true) {
+
+            enemyAnim.SetTrigger("Spell1");
+
+
+        }
     }
 
 

@@ -596,6 +596,7 @@ MonoBehaviour:
   canSeeTheTarget: 0
   isRangeEnemy: 1
   rayHeight: 0.7
+  anim: {fileID: 5830089588239710300}
 --- !u!1001 &8869862110452399676
 PrefabInstance:
   m_ObjectHideFlags: 0
